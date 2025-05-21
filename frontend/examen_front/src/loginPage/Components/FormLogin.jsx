@@ -52,7 +52,7 @@ const FormLogin = () => {
             Iniciar sesión
           </Button>
           <Typography variant="body2" textAlign="center" color="text.secondary">
-            ¿No tienes cuenta? <a href="/crear-cuenta">Regístrate</a>
+            ¿Aún no tienes cuenta? <a href="/crear-cuenta">Regístrate</a>
           </Typography>
         </Box>
       </Paper>
