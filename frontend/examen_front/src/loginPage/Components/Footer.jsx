@@ -34,7 +34,7 @@ const Footer = () => {
         </Grid>
         <Box mt={4} textAlign="center">
           <Typography variant="caption" color="text.secondary">
-            © {new Date().getFullYear()} PractiConnect. Todos los derechos reservados.
+            © {new Date().getFullYear()} PracticaAcá. Todos los derechos reservados.
           </Typography>
         </Box>
       </Container>

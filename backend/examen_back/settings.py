@@ -3,7 +3,6 @@ from datetime import timedelta
 import dj_database_url
 import os
 
-# Cargar variables del entorno local si existen
 from dotenv import load_dotenv
 load_dotenv(dotenv_path=os.path.join(Path(__file__).resolve().parent.parent, '.env.local'))
 
@@ -70,7 +69,6 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'examen_back.wsgi.application'
 
-# ✅ Soporte para Railway o entorno local
 DATABASES = {
     'default': dj_database_url.config(
         default=os.environ.get(
