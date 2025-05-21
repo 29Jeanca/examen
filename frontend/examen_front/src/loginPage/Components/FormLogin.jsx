@@ -36,8 +36,8 @@ const FormLogin = () => {
             Iniciar Sesión
           </Typography>
           <TextField
-            label="Correo electrónico"
-            type="email"
+            label="Usuario"
+            type="text"
             fullWidth
             variant="outlined"
           />
