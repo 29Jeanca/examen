@@ -6,7 +6,7 @@ const Header = () => {
     <AppBar position="static" color="default" elevation={1}>
       <Toolbar>
         <Typography variant="h6" fontWeight="bold" color="primary">
-          PractiConnect
+            PracticaAcá
         </Typography>
         <Box sx={{ flexGrow: 1 }} />
       </Toolbar>

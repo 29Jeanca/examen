@@ -16,7 +16,7 @@ const Footer = () => {
         <Grid container spacing={2} justifyContent="space-between">
           <Grid item xs={12} sm={6}>
             <Typography variant="h6" fontWeight="bold" gutterBottom>
-              PractiConnect
+              PracticaAcá
             </Typography>
           </Grid>
           <Grid item xs={12} sm={6}>
