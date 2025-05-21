@@ -1,7 +1,7 @@
 import Footer from '../Components/Footer';
 import FormLogin from '../Components/FormLogin';
 import Header from '../Components/Header';
-import '../styles/Login.css';
+import '../Styles/Login.css';
 const Login = () => {
     return(
         <>
