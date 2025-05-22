@@ -29,3 +29,20 @@ const createLoginUser = async (endpoint, data) => {
 };
 
 export { createLoginUser };
+
+const uploadProfilePicture = async(imagen,preset)=>{
+    const formData = new FormData();
+    formData.append('file',imagen);
+    formData.append('upload_preset',preset);
+    try{
+        const response = await fetch('https://api.cloudinary.com/v1_1/ddw0qbl5o/upload',{
+            method: 'POST',
+            body: formData
+        });
+        const data = await response.json();
+        return data;
+    }catch(error){
+        console.error('Error:',error);
+    }
+}
+export {uploadProfilePicture}

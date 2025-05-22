@@ -6,8 +6,28 @@ import {
   TextField,
   Typography,
 } from "@mui/material";
-
+import { createLoginUser } from "../../services/fetch";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 const FormLogin = () => {
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  const navigate = useNavigate();
+  const validateUser = async(e)=>{
+     e.preventDefault()
+     const user = {
+        username,
+        password,
+      };
+    const res = await createLoginUser("users/validate-user/", user);
+    if (res.ok) {
+      console.log("Inicio de sesión exitoso");
+      navigate("/inicio");
+    } else {
+      console.error("Error en el inicio de sesión");
+    }
+  }
+
   return (
     <Container
       maxWidth="sm"
@@ -40,14 +60,16 @@ const FormLogin = () => {
             type="text"
             fullWidth
             variant="outlined"
+            onChange={(e) => setUsername(e.target.value)}
           />
           <TextField
             label="Contraseña"
             type="password"
             fullWidth
             variant="outlined"
+            onChange={(e) => setPassword(e.target.value)}
           />
-          <Button variant="contained" color="primary" fullWidth>
+          <Button variant="contained" color="primary" fullWidth onClick={validateUser}>
             Iniciar sesión
           </Button>
           <Typography variant="body2" textAlign="center" color="text.secondary">
