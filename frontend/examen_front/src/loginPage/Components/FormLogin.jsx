@@ -5,6 +5,8 @@ import {
   Paper,
   TextField,
   Typography,
+  CircularProgress,
+
 } from "@mui/material";
 import { createLoginUser } from "../../services/fetch";
 import { useState } from "react";
@@ -13,18 +15,26 @@ const FormLogin = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
+  const [loading, setLoading] = useState(false);
+  const [showMessage, setShowMessage] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
+
   const validateUser = async(e)=>{
+
      e.preventDefault()
      const user = {
         username,
         password,
       };
     const res = await createLoginUser("users/validate-user/", user);
+    setLoading(false);
     if (res.ok) {
-      console.log("Inicio de sesión exitoso");
+      setShowMessage(true);
       navigate("/inicio");
+      
     } else {
-      console.error("Error en el inicio de sesión");
+      setShowMessage(true);
+      setErrorMessage(res.data.error);
     }
   }
 
@@ -69,9 +79,26 @@ const FormLogin = () => {
             variant="outlined"
             onChange={(e) => setPassword(e.target.value)}
           />
+          {
+          loading &&   
+          <Box display="flex" justifyContent="center" mt={2}>
+              <CircularProgress />
+          </Box>
+          }
           <Button variant="contained" color="primary" fullWidth onClick={validateUser}>
             Iniciar sesión
           </Button>
+          {showMessage && (
+            <Typography
+              variant="body2"
+              textAlign="center"
+              color={errorMessage ? "error.main" : "success.main"}
+            >
+              {errorMessage || "Inicio de sesión exitoso!"}
+            </Typography>
+          )}
+
+
           <Typography variant="body2" textAlign="center" color="text.secondary">
             ¿Aún no tienes cuenta? <a href="/crear-cuenta">Regístrate</a>
           </Typography>

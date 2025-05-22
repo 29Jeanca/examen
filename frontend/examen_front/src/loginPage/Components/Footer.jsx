@@ -15,7 +15,7 @@ const Footer = () => {
         <Grid container spacing={2} justifyContent="space-between">
           <Grid item xs={12} sm={6}>
             <Typography variant="h6" fontWeight="bold" gutterBottom>
-              PracticaAcá
+              PracticAcá
             </Typography>
           </Grid>
           <Grid item xs={12} sm={6}>
@@ -34,7 +34,7 @@ const Footer = () => {
         </Grid>
         <Box mt={4} textAlign="center">
           <Typography variant="caption" color="text.secondary">
-            © {new Date().getFullYear()} PracticaAcá. Todos los derechos reservados.
+            © {new Date().getFullYear()} PracticAcá. Todos los derechos reservados.
           </Typography>
         </Box>
       </Container>

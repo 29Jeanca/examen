@@ -1,9 +1,22 @@
+import Footer from "../../loginPage/Components/Footer";
+import Header from "../../loginPage/Components/Header";
+import CardTest from "../Components/CardTest";
+
 const Home = () => {
     return (
-        <div>
-        <h1>Welcome to the Home Page</h1>
-        <p>This is the home page of our application.</p>
-        </div>
+        <>
+        <header>
+            <Header/>
+        </header>
+        <main>
+            <CardTest/>
+        </main>
+
+
+        <footer>
+            <Footer/>
+        </footer>
+        </>
     );
     }
 export default Home;
