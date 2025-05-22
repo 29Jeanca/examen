@@ -1,9 +1,9 @@
-const API_URL_LOCAL = "http://127.0.0.1:8000/";
-// const API_URL = "https://examen-backend-production.up.railway.app/";
+// const API_URL_LOCAL = "http://127.0.0.1:8000/";
+const API_URL = "https://examen-production-3f7a.up.railway.app/";
 
 const createLoginUser = async (endpoint, data) => {
   try {
-    const response = await fetch(`${API_URL_LOCAL}${endpoint}`, {
+    const response = await fetch(`${API_URL}${endpoint}`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
