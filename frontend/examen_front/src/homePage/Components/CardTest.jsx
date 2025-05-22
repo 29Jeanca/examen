@@ -19,7 +19,7 @@ const CardTest=({title,subtitle,img})=>{
       <CardHeader
         avatar={
           <Avatar sx={{ bgcolor: red[500] }} aria-label="recipe">
-            R
+            R   
           </Avatar>
         }
         title="Shrimp and Chorizo Paella"
