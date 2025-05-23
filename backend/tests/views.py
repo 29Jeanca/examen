@@ -5,6 +5,7 @@ from .models import Test, UserAnswer,Question, Option
 from .serializers import TestSerializer, UserAnswerSerializer, QuestionSerializer, OptionSerializer
 from rest_framework.decorators import action
 from rest_framework.response import Response
+from rest_framework.generics import RetrieveUpdateDestroyAPIView
 class TestViewSet(viewsets.ModelViewSet):
     queryset = Test.objects.prefetch_related('questions__options').all()
     serializer_class = TestSerializer
@@ -43,3 +44,13 @@ class TestViewSet(viewsets.ModelViewSet):
         serializer = QuestionSerializer(questions, many=True)
         return Response(serializer.data)
 
+
+class QuestionEditView(RetrieveUpdateDestroyAPIView):
+    queryset = Question.objects.all()
+    serializer_class = QuestionSerializer
+    # permission_classes = [IsAuthenticated]
+
+class OptionEditView(RetrieveUpdateDestroyAPIView):
+    queryset = Option.objects.all()
+    serializer_class = OptionSerializer
+    # permission_classes = [IsAuthenticated]

@@ -28,8 +28,13 @@ const Home = () => {
         <main>
             <h1 className="h1-text">Exámenes disponibles</h1>
         <section className="cont-main">
+        
+            {data.length === 0 && !loading && <p className="no-test">No hay exámenes disponibles</p>}
+
             {loading && <div className="loading">Cargando...</div>}
+            
             <ListCardTest data={data}/>
+        
         </section>
             </main>    
 

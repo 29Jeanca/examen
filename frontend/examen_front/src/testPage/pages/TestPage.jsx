@@ -3,6 +3,7 @@ import Header from "../components/Header";
 import SelectQuestion from "../components/SelectQuestion";
 import { getData } from "../../services/fetch";
 import ListSelectQuestion from "../components/ListSelelectQuestion";
+import "../styles/TestPage.css";
 const TestPage = () => {
     const [questions, setQuestions] = useState([]);
 
