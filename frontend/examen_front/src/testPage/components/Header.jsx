@@ -1,6 +1,5 @@
 import { AppBar, Toolbar, Typography, Box, Stack, Button } from '@mui/material';
 import { useState, useRef, useEffect } from 'react';
-
 const Header = ({ test, questionQuantity }) => {
   const [timer, setTimer] = useState(0);
   const [active, setActive] = useState(false);

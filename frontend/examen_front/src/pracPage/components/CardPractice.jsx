@@ -4,8 +4,9 @@ import CardMedia from '@mui/material/CardMedia';
 import Avatar from '@mui/material/Avatar';
 import { red } from '@mui/material/colors';
 import { Typography } from '@mui/material';
+import "../styles/CardTest.css";
 
-const CardTest=({title,date_created,img,description,click})=>{
+const CardPractice=({title,date_created,img,description,click})=>{
   const formatDate = (dateString) => {
   const date = new Date(dateString);
   const day = String(date.getDate()).padStart(2, '0');
@@ -40,4 +41,4 @@ const CardTest=({title,date_created,img,description,click})=>{
     </Card>
   );
 }
-export default CardTest;
+export default CardPractice;

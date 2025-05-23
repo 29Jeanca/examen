@@ -5,8 +5,12 @@ import CardTest from "../Components/CardTest";
 import "../styles/Home.css";
 import { getData } from "../../services/fetch";
 import ListCardTest from "../Components/ListCardTest";
+import ListPracticeCard from "../../pracPage/components/ListPracticeCard";
+import ListCardPractice from "../../pracPage/components/ListCardPractice";
+
 const Home = () => {
     const [data,setData] = useState([]);
+    const [practice,setPractice] = useState([]);
     const [loading,setLoading] = useState(true);
 
     useEffect(()=>{
@@ -17,6 +21,14 @@ const Home = () => {
                 setLoading(false);
         }
         }
+        const getPractice = async () =>{
+            const response = await getData('practices/practice')
+            if(response.ok){
+                setPractice(response.data);
+                setLoading(false);
+        }
+        }
+        getPractice();
         getTest();
     },[])
 
@@ -34,8 +46,15 @@ const Home = () => {
             {loading && <div className="loading">Cargando...</div>}
             
             <ListCardTest data={data}/>
-        
+
         </section>
+        <h2 className="h1-text">Prácticas disponibles</h2>
+        <section className="cont-main">
+                {practice.length === 0 && !loading && <p className="no-test">No hay prácticas disponibles</p>}
+                <ListCardPractice data={practice}/>
+        </section>
+
+        
             </main>    
 
 
