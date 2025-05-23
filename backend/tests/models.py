@@ -34,6 +34,8 @@ class Option(models.Model):
     test = models.ForeignKey(Test, related_name='options', on_delete=models.CASCADE)
     text = models.CharField(max_length=255)
     is_correct = models.BooleanField(default=False)
+    why_is_correct = models.TextField(blank=True, null=True)
+
     def __str__(self):
         return f"{self.text} ({'Correcta' if self.is_correct else 'Incorrecta'})"
 
@@ -41,6 +43,7 @@ class UserAnswer(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     question = models.ForeignKey(Question, on_delete=models.CASCADE)
     options = models.ManyToManyField(Option, blank=True)
+    test = models.ForeignKey(Test, related_name='user_answers', on_delete=models.CASCADE)
     open_answer = models.TextField(blank=True, null=True)
     answer_date = models.DateTimeField(auto_now_add=True)
 

@@ -1,4 +1,4 @@
-const API_URL_LOCAL = "http://127.0.0.1:8000/";
+const API_URL_LOCAL = "http://localhost:8000/";
 // const API_URL = "https://examen-backend-production.up.railway.app/";
 
 const createLoginUser = async (endpoint, data) => {
@@ -46,3 +46,24 @@ const uploadProfilePicture = async(imagen,preset)=>{
     }
 }
 export {uploadProfilePicture}
+
+const getData = async(endpoint,id="") => {
+    try{
+      const response = await fetch(`${API_URL_LOCAL}${endpoint}/${id}`,)
+      const data = await response.json()
+      console.log('Data:',data)
+      return {
+        ok: response.ok,
+        status: response.status,
+        data: data
+      }
+    }catch(error){
+      console.error('Error:',error)
+      return {
+        ok: false,
+        status: 500,
+        data: {error: 'Error de red o del servidor.'}
+      }
+    }
+}
+export {getData}
