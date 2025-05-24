@@ -49,7 +49,7 @@ export {uploadProfilePicture}
 
 const getData = async(endpoint,id="") => {
     try{
-      const response = await fetch(`${API_URL_LOCAL}${endpoint}/${id}`,)
+      const response = await fetch(`${API_URL}${endpoint}/${id}`,)
       const data = await response.json()
       console.log('Data:',data)
       return {
