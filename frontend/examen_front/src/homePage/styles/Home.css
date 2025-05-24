@@ -1,0 +1,15 @@
+
+.cont-main{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+
+}
+.cont-header{
+    margin-bottom: 20px;
+}
+.h1-text{
+    text-align: center;
+    color: #1976d9;
+}

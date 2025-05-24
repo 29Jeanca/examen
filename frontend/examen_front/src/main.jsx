@@ -1,9 +1,11 @@
-import { StrictMode } from 'react'
-import { createRoot } from 'react-dom/client'
-import Routing from './routes/Routing'
-import './GlobalStyles.css'
+import { StrictMode} from 'react';
+import { createRoot } from 'react-dom/client';
+import './GlobalStyles.css';
+import Root from './Root';
+
+
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <Routing/>
-  </StrictMode>,
-)
+    <Root />
+  </StrictMode>
+);
