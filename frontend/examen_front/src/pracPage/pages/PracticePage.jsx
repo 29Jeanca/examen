@@ -13,32 +13,28 @@ const tips = [
 ];
 
 const PracticePage = () => {
-  const [questions, setQuestions] = useState([]);
+  const [topic, setTopic] = useState([]);
 
   useEffect(()=>{
-     const getQuestions = async () =>{
-        const response = await getData('practices/practice-cont')
-        setQuestions(response.data);
+     const getTopic = async () =>{
+        const response = await getData('practices/practice', localStorage.getItem('id_practica'));
+        setTopic(response.data);
       }
-      getQuestions();
+      getTopic();
   },[])
   return (
     <>
     <Header/>
     <Container maxWidth="md" sx={{ py: 5 }}>
-        
-      {questions.map((question) =>{
-          return(
-            <PracticeCard
-              key={question.i}
-              title={question.text}
-            />
-          )
-      })}  
-      <PracticeCard
-        title="Tema: Lógica Proposicional"
-        description="Entiende el uso de conectores lógicos y tablas de verdad."
-      />
+      
+     {topic && (
+  <PracticeCard
+    key={topic.id}
+    title={topic.title}
+    description={topic.description}
+  />
+)} 
+      
 
       <OpracticeCard
         question="¿Cuál es la tabla de verdad de una conjunción?"
