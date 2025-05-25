@@ -7,7 +7,7 @@ const ListSelectQuestion = ({ questions }) => {
   const saveSelectedOption = (id, optionId, stateQuestion) => {
     const newOptions = {
       ...selectedOptions,
-      [id]: { optionId, stateQuestion },
+      [id]: { optionId, stateQuestion,id,is_correct: stateQuestion },
     };
     setSelectedOptions(newOptions);
     localStorage.setItem("questions", JSON.stringify(newOptions));

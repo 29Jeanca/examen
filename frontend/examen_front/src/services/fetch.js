@@ -30,6 +30,35 @@ const createLoginUser = async (endpoint, data) => {
 
 export { createLoginUser };
 
+const postData = async (endpoint, data) => {
+  try {
+    const response = await fetch(`${API_URL_LOCAL}${endpoint}`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    });
+
+    const resData = await response.json();
+
+    return {
+      ok: response.ok,
+      status: response.status,
+      data: resData,
+    };
+  } catch (error) {
+    console.error("Error en postData:", error);
+    return {
+      ok: false,
+      status: 500,
+      data: { error: "Error de red o del servidor." },
+    };
+  }
+}
+
+export { postData };
+
 const uploadProfilePicture = async(imagen,preset)=>{
     const formData = new FormData();
     formData.append('file',imagen);

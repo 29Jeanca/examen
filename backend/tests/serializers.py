@@ -25,6 +25,12 @@ class TestSerializer(serializers.ModelSerializer):
 
 class UserAnswerSerializer(serializers.ModelSerializer):
     test = serializers.PrimaryKeyRelatedField(queryset=Test.objects.all())
+    options = serializers.PrimaryKeyRelatedField(
+        many=True,
+        queryset=Option.objects.all(),
+        required=False
+    )
+
     class Meta:
         model = UserAnswer
         fields = ['id', 'user', 'question', 'options', 'open_answer', 'answer_date', 'test']

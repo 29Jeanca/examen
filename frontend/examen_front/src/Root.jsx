@@ -17,7 +17,7 @@ const Root = () => {
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
-    <div style={{ position: "fixed", top: 10, right: 10, zIndex: 9999 }}>
+    <div style={{ position: "absolute", top: 10, right: 10, zIndex: 9999 }}>
   <IconButton onClick={toggleMode} color="inherit">
     {mode === "light" ? <Brightness4Icon /> : <Brightness7Icon />}
   </IconButton>
