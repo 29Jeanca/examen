@@ -4,6 +4,7 @@ import SelectQuestion from "../components/SelectQuestion";
 import { getData } from "../../services/fetch";
 import ListSelectQuestion from "../components/ListSelelectQuestion";
 import "../styles/TestPage.css";
+import { Button } from "@mui/material";
 const TestPage = () => {
     const [questions, setQuestions] = useState([]);
 
@@ -22,15 +23,16 @@ const TestPage = () => {
   return(
         <>
         <header>
-            <Header test={localStorage.getItem('title') || 'Examen'} questionQuantity={10}/>
+            <Header test={localStorage.getItem('title') || 'Examen'} questionQuantity={questions.length}/>
         </header>
        
         <main className="cont-main-questions">
            {questions.length === 0
   ? <p>Cargando preguntas...</p>
   : <ListSelectQuestion questions={questions} />
-}
+}      
 
+        <Button variant="contained" color="success">Enviar Respuestas</Button>
         </main>
         </>
     )

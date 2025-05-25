@@ -22,15 +22,8 @@ class Test(models.Model):
 class Question(models.Model):
     test = models.ForeignKey(Test, related_name='questions', on_delete=models.CASCADE)
     text = models.TextField()
-    type = models.CharField(
-        max_length=10,
-        choices=[
-            ('UNICA', 'Opción única'),
-            ('MULTIPLE', 'Opción múltiple'),
-            ('ABIERTA', 'Respuesta abierta')
-        ],
-        default='UNICA'
-    )
+    type = models.CharField(max_length=10,default='UNICA')
+
 
     def __str__(self):
         return self.text
@@ -40,7 +33,8 @@ class Option(models.Model):
     test = models.ForeignKey(Test, related_name='options', on_delete=models.CASCADE)
     text = models.CharField(max_length=255)
     is_correct = models.BooleanField(default=False)
-    why_is_correct = models.TextField(blank=True, null=True)
+    why_is_correct = models.TextField()
+
 
     def __str__(self):
         return f"{self.text} ({'Correcta' if self.is_correct else 'Incorrecta'})"

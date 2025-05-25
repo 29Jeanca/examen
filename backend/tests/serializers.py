@@ -7,7 +7,7 @@ class OptionSerializer(serializers.ModelSerializer):
     test = serializers.PrimaryKeyRelatedField(queryset=Test.objects.all()) #Para relacionar las opciones al exmane
     class Meta:
         model = Option
-        fields = ['id', 'question','test' ,'text', 'is_correct']
+        fields = ['id', 'question','test' ,'text', 'is_correct', 'why_is_correct']
 
 class QuestionSerializer(serializers.ModelSerializer):
     test = serializers.PrimaryKeyRelatedField(queryset=Test.objects.all())
