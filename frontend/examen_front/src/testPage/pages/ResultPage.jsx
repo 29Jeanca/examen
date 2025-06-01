@@ -61,7 +61,8 @@ const ResultPage = () => {
               Respuestas Correctas
             </Typography>
             {correctAnswers.map((answer, i) => (
-              <AnswerCard key={i} text={`Pregunta ${i + 1}: ${answer.text_question}`} correct={answer.is_correct} option={answer.text.toUpperCase()}/>
+              <AnswerCard key={i} text={`Pregunta ${i + 1}: ${answer.text_question}`} correct={answer.is_correct} option={answer.text.toUpperCase()} explanation=
+              {answer.why_is_correct}/>
             ))}
           </Paper>
         </Grid>
