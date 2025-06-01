@@ -20,7 +20,7 @@ const FormLogin = () => {
   const [errorMessage, setErrorMessage] = useState("");
 
   const validateUser = async(e)=>{
-
+    setLoading(true);
      e.preventDefault()
      const user = {
         username,
@@ -97,7 +97,6 @@ const FormLogin = () => {
               {errorMessage || "Inicio de sesión exitoso!"}
             </Typography>
           )}
-
 
           <Typography variant="body2" textAlign="center" color="text.secondary">
             ¿Aún no tienes cuenta? <a href="/crear-cuenta">Regístrate</a>

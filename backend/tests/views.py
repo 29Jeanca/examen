@@ -6,6 +6,8 @@ from .serializers import TestSerializer, UserAnswerSerializer, QuestionSerialize
 from rest_framework.decorators import action
 from rest_framework.response import Response
 from rest_framework.generics import RetrieveUpdateDestroyAPIView
+
+
 class TestViewSet(viewsets.ModelViewSet):
     queryset = Test.objects.prefetch_related('questions__options').all()
     serializer_class = TestSerializer
@@ -13,19 +15,41 @@ class TestViewSet(viewsets.ModelViewSet):
 class UserAnswerViewSet(viewsets.ModelViewSet):
     queryset = UserAnswer.objects.all()
     serializer_class = UserAnswerSerializer
-    # permission_classes = [IsAuthenticated]
+    # permission_classes = [IsAuthenticated]  # Descomenta si usas autenticación
 
     def perform_create(self, serializer):
-        #solo para pruebas, se puede cambiar por el usuario que hace la peticion
-        user = User.objects.first()
+        user = User.objects.first()  # Para pruebas
         serializer.save(user=user)
 
-        # el que si funca
-        # serializer.save(user=self.request.user)
+    @action(detail=False, methods=['get'], url_path='by-user-test')
+    def get_user_answers_by_test(self, request):
+        user_id = request.query_params.get('user_id')
+        test_id = request.query_params.get('test_id')
+
+        if not user_id or not test_id:
+            return Response({"error": "Se requieren parámetros 'user_id' y 'test_id'"}, status=400)
+
+        answers = UserAnswer.objects.filter(user_id=user_id, test_id=test_id).select_related('question').prefetch_related('options')
+        serializer = self.get_serializer(answers, many=True)
+        return Response(serializer.data)
         
 class QuestionViewSet(viewsets.ModelViewSet):
-    queryset = Question.objects.all()
     serializer_class = QuestionSerializer
+
+    def get_queryset(self):
+        queryset = Question.objects.all()
+        test_id = self.request.query_params.get('test_id')
+
+        if test_id:
+            queryset = queryset.filter(options__test_id=test_id, options__is_correct=True).distinct()
+
+        return queryset
+
+
+    
+
+
+
 
 class OptionViewSet(viewsets.ModelViewSet):
     queryset = Option.objects.all()

@@ -37,7 +37,7 @@ class Option(models.Model):
 
 
     def __str__(self):
-        return f"{self.text} ({'Correcta' if self.is_correct else 'Incorrecta'})"
+        return self.text
 
 class UserAnswer(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)

@@ -96,3 +96,25 @@ const getData = async(endpoint,id="") => {
     }
 }
 export {getData}
+
+const getUserAnswersByTest = async(userId, testId) => {
+  const peticion = await fetch(`http://localhost:8000/tests/answers/by-user-test/?user_id=${userId}&test_id=${testId}`);
+  if (!peticion.ok) {
+    throw new Error("Error al obtener las respuestas del usuario");
+  }
+  const data = await peticion.json();
+  return data;
+}
+export { getUserAnswersByTest };
+
+const getAnswersByTest = async(testId) => {
+  const peticion = await fetch(`http://localhost:8000/tests/options/?test=${testId}`);
+  if (!peticion.ok) {
+    console.log(peticion);
+    throw new Error("Error al obtener las respuestas del test");
+    
+  }
+  const data = await peticion.json();
+  return data;
+}
+export { getAnswersByTest };

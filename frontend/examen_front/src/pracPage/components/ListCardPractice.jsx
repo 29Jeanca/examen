@@ -14,6 +14,7 @@ const ListCardPractice = ({data}) => {
                         description={item.description}
                         click={()=>{
                             localStorage.setItem('id_practica',item.id)
+                            localStorage.setItem('title_practica',item.title)
                             navigate("/practica")
                         }}
 
